@@ -1,9 +1,9 @@
 package com.ResearchBuddy.AIproject.persistence.dto;
 
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchDepthType;
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchDomainType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ResearchDepth;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ResearchDomain;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
@@ -27,9 +27,9 @@ public class ReportSummaryResponse {
 
   private String query;
 
-  private ResearchDomainType domain;
+  private ResearchDomain domain;
 
-  private ResearchDepthType depth;
+  private ResearchDepth depth;
 
   @DecimalMin(value = "0.000", inclusive = true)
   @DecimalMax(value = "1.000", inclusive = true)

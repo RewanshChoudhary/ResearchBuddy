@@ -1,8 +1,8 @@
 package com.ResearchBuddy.AIproject.persistence.dto;
 
-import com.ResearchBuddy.AIproject.persistence.dto.enums.JobStatusType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.JobStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -25,7 +25,7 @@ public class ResearchJobAcceptedResponse {
 
   @Builder.Default
   @NotNull
-  private JobStatusType status = JobStatusType.PENDING;
+  private JobStatus status = JobStatus.PENDING;
 
   @Builder.Default
   @NotNull

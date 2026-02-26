@@ -48,6 +48,7 @@ public class ResearchReportEntity {
   private String summary;
 
   @Column(name = "key_findings", nullable = false, columnDefinition = "jsonb")
+  @Builder.Default
   private String keyFindings = "[]";
 
   @Column(name = "fact_check_verdict", columnDefinition = "text")
@@ -61,15 +62,19 @@ public class ResearchReportEntity {
 
   @Enumerated(EnumType.STRING)
   @Column(name = "output_format", nullable = false, length = 20)
+  @Builder.Default
   private OutputFormat outputFormat = OutputFormat.JSON;
 
   @Column(name = "total_sources_found", nullable = false)
+  @Builder.Default
   private Integer totalSourcesFound = 0;
 
   @Column(name = "total_sources_processed", nullable = false)
+  @Builder.Default
   private Integer totalSourcesProcessed = 0;
 
   @Column(name = "total_time_ms", nullable = false)
+  @Builder.Default
   private Integer totalTimeMs = 0;
 
   @Column(name = "created_at", nullable = false, updatable = false)

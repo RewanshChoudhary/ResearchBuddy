@@ -37,6 +37,7 @@ public class SummaryCacheEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
+    @Builder.Default
     private ResearchDomain domain = ResearchDomain.GENERAL;
 
     @Column(nullable = false, columnDefinition = "text")
@@ -52,6 +53,7 @@ public class SummaryCacheEntity {
     private LocalDateTime expiresAt;
 
     @Column(name = "hit_count", nullable = false)
+    @Builder.Default
     private Integer hitCount = 0;
 
     @PrePersist

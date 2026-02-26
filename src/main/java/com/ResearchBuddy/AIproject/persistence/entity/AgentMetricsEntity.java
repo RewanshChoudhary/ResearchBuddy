@@ -47,9 +47,11 @@ public class AgentMetricsEntity {
     private Integer durationMs;
 
     @Column(name = "llm_calls_made", nullable = false)
+    @Builder.Default
     private Integer llmCallsMade = 0;
 
     @Column(name = "tokens_used", nullable = false)
+    @Builder.Default
     private Integer tokensUsed = 0;
 
     @Column(nullable = false)

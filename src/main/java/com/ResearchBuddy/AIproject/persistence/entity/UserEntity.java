@@ -44,9 +44,11 @@ public class UserEntity {
   private boolean active = true;
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+  @Builder.Default
   private List<ResearchJobEntity> jobs = new ArrayList<>();
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+  @Builder.Default
   private List<ResearchReportEntity> reports = new ArrayList<>();
 
   @PrePersist

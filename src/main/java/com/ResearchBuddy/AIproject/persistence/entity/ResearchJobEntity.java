@@ -35,66 +35,72 @@ import lombok.NoArgsConstructor;
 @Table(name = "research_jobs")
 public class ResearchJobEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "user_id", nullable = false)
+  private UserEntity user;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String query;
+  @Column(nullable = false, columnDefinition = "text")
+  private String query;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private ResearchDomain domain = ResearchDomain.GENERAL;
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false, length = 50)
+  @Builder.Default
+  private ResearchDomain domain = ResearchDomain.GENERAL;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private ResearchDepth depth = ResearchDepth.STANDARD;
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false, length = 20)
+  @Builder.Default
+  private ResearchDepth depth = ResearchDepth.STANDARD;
 
-    @Column(name = "fact_check_enabled", nullable = false)
-    private boolean factCheckEnabled;
+  @Column(name = "fact_check_enabled", nullable = false)
+  private boolean factCheckEnabled;
 
-    @Column(name = "max_sources", nullable = false)
-    private Integer maxSources = 10;
+  @Column(name = "max_sources", nullable = false)
+  @Builder.Default
+  private Integer maxSources = 10;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private JobStatus status = JobStatus.PENDING;
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false, length = 20)
+  @Builder.Default
+  private JobStatus status = JobStatus.PENDING;
 
-    @Column(name = "current_stage", length = 50)
-    private String currentStage;
+  @Column(name = "current_stage", length = 50)
+  private String currentStage;
 
-    @Column(name = "error_message", columnDefinition = "text")
-    private String errorMessage;
+  @Column(name = "error_message", columnDefinition = "text")
+  private String errorMessage;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+  @Column(name = "created_at", nullable = false, updatable = false)
+  private LocalDateTime createdAt;
 
-    @Column(name = "started_at")
-    private LocalDateTime startedAt;
+  @Column(name = "started_at")
+  private LocalDateTime startedAt;
 
-    @Column(name = "completed_at")
-    private LocalDateTime completedAt;
+  @Column(name = "completed_at")
+  private LocalDateTime completedAt;
 
-    @OneToOne(mappedBy = "job", fetch = FetchType.LAZY)
-    private ResearchReportEntity report;
+  @OneToOne(mappedBy = "job", fetch = FetchType.LAZY)
+  private ResearchReportEntity report;
 
-    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
-    private List<SourceEntity> sources = new ArrayList<>();
+  @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
+  @Builder.Default
+  private List<SourceEntity> sources = new ArrayList<>();
 
-    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
-    private List<AgentMetricsEntity> agentMetrics = new ArrayList<>();
+  @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
+  @Builder.Default
+  private List<AgentMetricsEntity> agentMetrics = new ArrayList<>();
 
-    @PrePersist
-    void onCreate() {
-        if (createdAt == null) {
-            createdAt = LocalDateTime.now();
-        }
-        if (status == null) {
-            status = JobStatus.PENDING;
-        }
+  @PrePersist
+  void onCreate() {
+    if (createdAt == null) {
+      createdAt = LocalDateTime.now();
     }
+    if (status == null) {
+      status = JobStatus.PENDING;
+    }
+  }
 }

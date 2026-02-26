@@ -27,36 +27,37 @@ import lombok.NoArgsConstructor;
 @Table(name = "sources")
 public class SourceEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "job_id", nullable = false)
-    private ResearchJobEntity job;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "job_id", nullable = false)
+  private ResearchJobEntity job;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String url;
+  @Column(nullable = false, columnDefinition = "text")
+  private String url;
 
-    @Column(length = 500)
-    private String title;
+  @Column(length = 500)
+  private String title;
 
-    @Column(name = "domain_name", length = 255)
-    private String domainName;
+  @Column(name = "domain_name", length = 255)
+  private String domainName;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "scrape_status", nullable = false, length = 20)
-    private ScrapeStatus scrapeStatus = ScrapeStatus.SKIPPED;
+  @Enumerated(EnumType.STRING)
+  @Builder.Default
+  @Column(name = "scrape_status", nullable = false, length = 20)
+  private ScrapeStatus scrapeStatus = ScrapeStatus.SKIPPED;
 
-    @Column(name = "content_length")
-    private Integer contentLength;
+  @Column(name = "content_length")
+  private Integer contentLength;
 
-    @Column(columnDefinition = "text")
-    private String summary;
+  @Column(columnDefinition = "text")
+  private String summary;
 
-    @Column(name = "is_trusted_source", nullable = false)
-    private boolean trustedSource;
+  @Column(name = "is_trusted_source", nullable = false)
+  private boolean trustedSource;
 
-    @Column(name = "scraped_at")
-    private LocalDateTime scrapedAt;
+  @Column(name = "scraped_at")
+  private LocalDateTime scrapedAt;
 }

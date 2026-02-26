@@ -1,11 +1,11 @@
 package com.ResearchBuddy.AIproject.persistence.dto;
 
-import com.ResearchBuddy.AIproject.persistence.dto.enums.JobStatusType;
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchDepthType;
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchDomainType;
 import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchStageType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.JobStatus;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ResearchDepth;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ResearchDomain;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -28,7 +28,7 @@ public class ResearchJobStatusResponse {
   private UUID jobId;
 
   @NotNull
-  private JobStatusType status;
+  private JobStatus status;
 
   private ResearchStageType currentStage;
 
@@ -38,9 +38,9 @@ public class ResearchJobStatusResponse {
 
   private String query;
 
-  private ResearchDomainType domain;
+  private ResearchDomain domain;
 
-  private ResearchDepthType depth;
+  private ResearchDepth depth;
 
   private Instant createdAt;
 

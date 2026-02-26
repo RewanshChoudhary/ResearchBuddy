@@ -1,10 +1,10 @@
 package com.ResearchBuddy.AIproject.persistence.dto;
 
-import com.ResearchBuddy.AIproject.persistence.dto.enums.OutputFormatType;
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchDepthType;
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ResearchDomainType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.OutputFormat;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ResearchDepth;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ResearchDomain;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -30,11 +30,11 @@ public class ResearchRequest {
 
   @Builder.Default
   @NotNull(message = "domain is required")
-  private ResearchDomainType domain = ResearchDomainType.GENERAL;
+  private ResearchDomain domain = ResearchDomain.GENERAL;
 
   @Builder.Default
   @NotNull(message = "depth is required")
-  private ResearchDepthType depth = ResearchDepthType.STANDARD;
+  private ResearchDepth depth = ResearchDepth.STANDARD;
 
   @Builder.Default
   private Boolean factCheck = Boolean.TRUE;
@@ -47,7 +47,7 @@ public class ResearchRequest {
 
   @Builder.Default
   @NotNull(message = "outputFormat is required")
-  private OutputFormatType outputFormat = OutputFormatType.JSON;
+  private OutputFormat outputFormat = OutputFormat.JSON;
 
   @Builder.Default
   @Size(max = 10, message = "trustedDomains can contain at most 10 domains")

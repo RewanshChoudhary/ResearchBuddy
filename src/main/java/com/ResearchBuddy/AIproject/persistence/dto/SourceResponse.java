@@ -1,8 +1,8 @@
 package com.ResearchBuddy.AIproject.persistence.dto;
 
-import com.ResearchBuddy.AIproject.persistence.dto.enums.ScrapeStatusType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.ResearchBuddy.AIproject.persistence.entity.enums.ScrapeStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -30,7 +30,7 @@ public class SourceResponse {
   private Boolean isTrustedSource = Boolean.FALSE;
 
   @NotNull
-  private ScrapeStatusType scrapeStatus;
+  private ScrapeStatus scrapeStatus;
 
   private String sourceSummary;
 
