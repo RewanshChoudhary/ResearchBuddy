@@ -9,6 +9,7 @@ import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.ResearchBuddy.AIproject.persistence.dto.ResearchJobAcceptedResponse;
+import com.ResearchBuddy.AIproject.persistence.dto.ResearchJobStatusResponse;
 import com.ResearchBuddy.AIproject.persistence.dto.ResearchRequest;
 import com.ResearchBuddy.AIproject.persistence.entity.ResearchJobEntity;
 import com.ResearchBuddy.AIproject.persistence.entity.UserEntity;
@@ -51,8 +52,13 @@ public class ResearchRequestService {
         .build();
 
   }
+ // TO DO 
+  public ResearchJobStatusResponse getStatus(String jobId, UUID id) {
+    ResearchJobStatusResponse response=new ResearchJobStatusResponse();
 
-  public ResearchJobAcceptedResponse getStatus(String jobId, UUID id) {
+    return response;
+
+
 
 
   }
